@@ -1,0 +1,30 @@
+body{
+    font-family: "Raleway", sans-serif; 
+}
+.jumbotron h3{
+    font-weight: 100;
+}
+
+#record_heading{
+    margin-left: 17rem;
+}
+
+.student.student_name{
+    font-weight: 600;
+    font-size: 2.1rem;
+    transition: font-size, 500ms;
+    -webkit-transition: font-size, 500ms;
+}
+
+.student.student_name:hover{
+    font-size: 3rem;
+    color: rgb(100, 100, 100);
+}
+
+.student.student_data{
+    display: none;
+}
+
+.student.student_data.showdata{
+    display: inline;
+}

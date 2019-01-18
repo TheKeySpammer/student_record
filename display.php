@@ -3,7 +3,7 @@ require("partials/header.html");
 
 $db = new mysqli('localhost', 'ursa', 'ulsafar', 'dbLab');
 if(mysqli_connect_errno()){
-    ?>
+?>
     <div class="text-center"> 
     <h2 class="alert alert-danger">
         Something went wrong with the database. Please Try again later.
@@ -25,29 +25,36 @@ if(mysqli_connect_errno()){
     </div>
 </div>
 
-<h2 class="text-center">List of archived students</h2>
+<h2 id="record_heading">List of archived students</h2>
 <div class="row justify-content-center">
     <div class="col-8">
-        <ul class="list-group">
-        
+        <div class="row justify-content-center">
+        <div class="col-8">
             <?php
-            $query = "select Name from std_record";
+            $query = "select Name, MobileNumber, Grade from std_record";
             $stmt = $db->prepare($query);
-            $stmt->execute();
-            $stmt->bind_result($std_name);
+            if($stmt->execute()){
+            $stmt->bind_result($std_name, $mobile_number, $grade);
             while($stmt->fetch()){
             ?>
-            <li class = "list-group-item">
-                <div class="row">
-                    <div class="col student_record_disp">
-                        <? echo $std_name ?>
+            <div class="student">
+                <h3 class="my-4 student_name"><? echo $std_name ?></h3>
+                <div class="student_data container">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title">Mobile Number</h5>
+                            <p class="card-text"><?echo $mobile_number?></p>
+                        </div>
+                        <div class="col">
+                            <h5 class="card-title">Grade</h5>
+                            <p class="card-text"><?echo $grade?></p>
+                        </div>
                     </div>
-                    <div class="col student_record_del"></div>
                 </div>
-            </li>
-            <?php } ?>
-        
-        </ul>
+            </div>
+            <?php }} ?>
+        </div>
+        </div>
     </div>
 </div>
 
