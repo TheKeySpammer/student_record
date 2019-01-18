@@ -1,3 +1,3 @@
-$(".student").on("click", ".student.student_name", function () {
-    $(".student.student_data").toggleClass("showdata");
+$("#student_list").on("click", "h3", function () {
+    $(this).toggleClass("showdata");
 });
